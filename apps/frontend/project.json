@@ -66,6 +66,9 @@
       "options": {
         "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "publish": {
+      "command": "nx build frontend && firebase deploy"
     }
   },
   "tags": []
