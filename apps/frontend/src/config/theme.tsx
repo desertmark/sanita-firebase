@@ -17,6 +17,7 @@ export const spotifyTheme = createTheme({
       secondary: '#FFF',
       disabled: '#666',
     },
+    mode: 'light',
   },
   typography: {
     fontFamily: 'Circular, Helvetica, Arial, sans-serif',
@@ -56,6 +57,24 @@ export const spotifyTheme = createTheme({
         thumb: {
           '&:focus, &:hover': {
             boxShadow: 'none',
+          },
+        },
+      },
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          color: '#AAA',
+          borderColor: '#1db954',
+        },
+      },
+    },
+
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& fieldset': {
+            borderColor: '#AAA',
           },
         },
       },

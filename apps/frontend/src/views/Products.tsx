@@ -3,8 +3,10 @@ import { ScreenTitle } from '@src/components/ScreenTitle';
 import { ShoppingCart } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
 import { SearchBar } from '@src/components/SearchBar';
+import { useProducts } from '@src/providers/ProductsProvider';
 
 export const ProductsView = () => {
+  const { products } = useProducts();
   return (
     <Screen>
       <ScreenTitle
@@ -22,7 +24,7 @@ export const ProductsView = () => {
           },
           {
             field: 'description',
-            headerName: 'descripcion',
+            headerName: 'Descripcion',
             flex: 1,
           },
           {
@@ -31,32 +33,7 @@ export const ProductsView = () => {
             flex: 1,
           },
         ]}
-        rows={[
-          {
-            id: 1,
-            code: '01.01.01.01',
-            description: 'Abrazadera',
-            price: 19.9,
-          },
-          {
-            id: 2,
-            code: '01.01.01.01',
-            description: 'Abrazadera',
-            price: 19.9,
-          },
-          {
-            id: 3,
-            code: '01.01.01.01',
-            description: 'Abrazadera',
-            price: 19.9,
-          },
-          {
-            id: 4,
-            code: '01.01.01.01',
-            description: 'Abrazadera',
-            price: 19.9,
-          },
-        ]}
+        rows={products}
       />
     </Screen>
   );

@@ -7,38 +7,43 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import { Text } from './Text';
 
 export interface SearchBarProps {
-  onSearch: (searchParams: {
-    criterias: Set<string>;
-    searchTerm: string;
-  }) => void;
+  onSearch: (searchParams: { criterias: string[]; searchTerm: string }) => void;
 }
 
 export const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
-  const [criterias, setCriterias] = useState<Set<string>>(new Set(['code']));
+  // const [criterias, setCriterias] = useState<string[]>(['code']);
+  const [criteria, setCriteria] = useState<string>('code');
+
+  // const handleChange = useCallback((key: string) => {
+  //   setCriterias((criterias) => {
+  //     return criterias.includes(key)
+  //       ? [...criterias.filter((c) => c !== key)]
+  //       : [...criterias, key];
+  //   });
+  // }, []);
 
   const handleChange = (key: string) => {
-    criterias.has(key) ? criterias.delete(key) : criterias.add(key);
-    setCriterias(new Set(criterias));
+    setCriteria(key);
   };
-  const disabled = criterias.size === 0;
+
+  // const disabled = criterias.length === 0;
+  console.log(criteria);
   return (
     <Box display="flex" flexDirection="column" gap={2}>
       <TextField
         label={`Buscar por...`}
         variant="outlined"
         fullWidth={true}
-        disabled={disabled}
-        onChange={(e) => onSearch?.({ criterias, searchTerm: e.target.value })}
+        // disabled={disabled}
+        onChange={(e) =>
+          onSearch?.({ criterias: [criteria], searchTerm: e.target.value })
+        }
       />
-      <ToggleButtonGroup
-        size="small"
-        value={Array.from(criterias)}
-        color="primary"
-      >
+      <ToggleButtonGroup size="small" value={criteria} color="primary">
         <ToggleButton value="code" onClick={() => handleChange('code')}>
           Codigo
         </ToggleButton>
@@ -50,11 +55,11 @@ export const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      {disabled && (
+      {/* {disabled && (
         <Text variant="caption" color="error">
           Debe seleccionar al menos un criterio de busqueda
         </Text>
-      )}
+      )} */}
     </Box>
   );
 };
