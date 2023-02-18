@@ -12,6 +12,11 @@ export const spotifyTheme = createTheme({
       default: '#121212',
       paper: '#282828',
     },
+    text: {
+      primary: '#AAA',
+      secondary: '#FFF',
+      disabled: '#666',
+    },
   },
   typography: {
     fontFamily: 'Circular, Helvetica, Arial, sans-serif',
@@ -50,6 +55,60 @@ export const spotifyTheme = createTheme({
         },
         thumb: {
           '&:focus, &:hover': {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
+  },
+});
+
+export const facebookTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#1877f2',
+    },
+    background: {
+      default: '#fff',
+    },
+  },
+  typography: {
+    fontFamily: ['Roboto', 'Helvetica Neue', 'sans-serif'].join(','),
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 'bold',
+      lineHeight: 1.5,
+    },
+    button: {
+      textTransform: 'none',
+      fontWeight: 'bold',
+      fontSize: '1rem',
+    },
+  },
+});
+
+export const instagramTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#833ab4',
+    },
+    secondary: {
+      main: '#c13584',
+    },
+    background: {
+      default: '#fafafa',
+    },
+  },
+  typography: {
+    fontFamily: ['Helvetica Neue', 'Arial', 'sans-serif'].join(','),
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        contained: {
+          borderRadius: 30,
+          boxShadow: 'none',
+          '&:hover': {
             boxShadow: 'none',
           },
         },

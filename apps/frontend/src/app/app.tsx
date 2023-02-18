@@ -1,12 +1,13 @@
 import { Layout } from '@components/Layout';
-import { Text } from '@components/Text';
+import { Screen } from '@components/Screen';
 import { Providers } from '@providers/providers';
+import { ProductsView } from '@src/views/Products';
 
 export function App() {
   return (
     <Providers>
       <Layout>
-        <Text>Hello World 2</Text>
+        <ProductsView />
       </Layout>
     </Providers>
   );
